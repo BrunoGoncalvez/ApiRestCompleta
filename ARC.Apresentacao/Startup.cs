@@ -30,7 +30,7 @@ namespace ARC.Apresentacao
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ARC.Apresentacao", Version = "v1" });
             });
 
-            services.AddSingleton<IClienteRepository, ClientRepository>();
+            services.AddScoped<IClientRepository, ClientRepository>();
 
             // Passando conexão para MainContext
             services.AddDbContext<MainContext>(options => 

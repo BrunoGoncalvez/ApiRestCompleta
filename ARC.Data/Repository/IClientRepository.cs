@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ARC.Data.Repository
 {
-    public interface IClienteRepository
+    public interface IClientRepository
     {
 
         // Retorna vários dados

@@ -1,4 +1,5 @@
 ﻿using ARC.Data.Repository;
+using ARC.Domain;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -26,6 +27,21 @@ namespace ARC.Apresentacao.Controllers
         public IActionResult Get()
         {
             return Ok(_repository.GetAll());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Add(Client client)
+        {
+            try
+            {
+                await _repository.Add(client);
+                return StatusCode(201);
+            }
+            catch(Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+            
         }
 
     }

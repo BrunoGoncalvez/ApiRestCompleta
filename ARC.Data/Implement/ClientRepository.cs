@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ARC.Data.Implement
 {
-    public class ClientRepository : IClienteRepository
+    public class ClientRepository : IClientRepository
     {
 
         private readonly MainContext _db;
@@ -28,5 +28,6 @@ namespace ARC.Data.Implement
         {
             return _db.Client;
         }
+
     }
 }
