@@ -1,5 +1,9 @@
+using ARC.Data;
+using ARC.Data.Implement;
+using ARC.Data.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -25,6 +29,13 @@ namespace ARC.Apresentacao
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ARC.Apresentacao", Version = "v1" });
             });
+
+            services.AddSingleton<IClienteRepository, ClientRepository>();
+
+            // Passando conexão para MainContext
+            services.AddDbContext<MainContext>(options => 
+                options.UseSqlServer(Configuration.GetConnectionString("ApiRestConnectionString")));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
